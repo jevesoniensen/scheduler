@@ -52,7 +52,7 @@ public class QuartzConfig {
 
         Set<Map.Entry<String, Job>> entries = getCronJobAnnotatedJobs().entrySet();
         List<ScheduleJobs> scheduleJobsList =
-                entries.stream().map(entry -> processAnnotation(schedulerFactoryBean, entry))
+                entries.stream().map(this::processAnnotation)
                         .collect(Collectors.toList());
 
 
@@ -62,7 +62,7 @@ public class QuartzConfig {
         schedulerFactoryBean.setTriggers((Trigger[])triggers.toArray(new Trigger[0]));
     }
 
-    private ScheduleJobs processAnnotation(SchedulerFactoryBean schedulerFactoryBean, Map.Entry<String, Job> jobEntry) {
+    private ScheduleJobs processAnnotation(Map.Entry<String, Job> jobEntry) {
 
         Job entryValue = jobEntry.getValue();
         String beanName = entryValue.getClass().getName();

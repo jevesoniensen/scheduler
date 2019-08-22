@@ -19,6 +19,6 @@ public class TchauWordJob implements Job {
     public void execute(JobExecutionContext jobExecutionContext) throws JobExecutionException {
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/YYYY HH:mm:ss.SSS");
-        System.out.println("Tchau Word " + sdf.format(new Date()));
+        //System.out.println("Tchau Word " + sdf.format(new Date()));
     }
 }
